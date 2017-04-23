@@ -1,29 +1,27 @@
-<h2>Sign up</h2>
+<div class="inner cover">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-signin'}) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <h1 class="cover-heading">Sign up</h1>
+    <label for="inputName" class="sr-only">Name</label>
+    <input type="text" id="inputName" value name="user[name]" class="form-control" placeholder="Name" required autofocus>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" value name="user[email]" id="inputEmail" class="form-control" placeholder="Email address" required>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" value name="user[password]" id="inputPassword" class="form-control" placeholder="Password" required>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <div class="radio-inline">
+      <label>
+        <input type="radio" name="user[user_type]"  checked="checked" value="student"> Student
+      </label>
+    </div>
+    <div class="radio-inline">
+      <label>
+        <input type="radio" name="user[user_type]" value="staff"> Staff
+      </label>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+  <% end %>
+</div>

@@ -15,7 +15,35 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Toilet Monitor</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="index.html">Home</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <% if (!current_user.present?) %>
+                    <li><a href="login.html">Log In</a></li>
+                  <% else %>
+                    <li><a href="/users/sign_out" data-method="delete">Log Out</a></li>
+                  <% end %>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <%= yield %>
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Toilet Monitor © 2017</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 	
 
